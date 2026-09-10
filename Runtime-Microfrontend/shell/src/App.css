@@ -1,0 +1,57 @@
+.app {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell-layout {
+  display: flex;
+  gap: 32px;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px 24px;
+  box-sizing: border-box;
+  align-items: flex-start;
+}
+
+.shell-products-section {
+  flex: 1;
+  min-width: 0;
+}
+
+.shell-section-header {
+  margin-bottom: 20px;
+}
+
+.shell-section-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+}
+
+.shell-section-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
+}
+
+.shell-cart-section {
+  width: 380px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 24px;
+}
+
+@media (max-width: 1024px) {
+  .shell-layout {
+    flex-direction: column;
+  }
+
+  .shell-cart-section {
+    width: 100%;
+    position: static;
+  }
+}
