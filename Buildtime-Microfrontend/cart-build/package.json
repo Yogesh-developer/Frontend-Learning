@@ -1,6 +1,5 @@
 {
   "name": "@buildmfa/cart-build",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
   "main": "./dist/index.js",
@@ -16,11 +15,11 @@
     "react-dom": "^19.2.8"
   },
   "files": ["dist"],
-  "exports":{
-    ".":"./dist/index.js",
-    "./dist/**":"./dist/**",
-    "./index.css":"./dist/index.css",
-    "./style.css":"./dist/index.css"
+  "exports": {
+    ".": "./dist/index.js",
+    "./dist/*": "./dist/*",
+    "./index.css": "./dist/index.css",
+    "./style.css": "./dist/index.css"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

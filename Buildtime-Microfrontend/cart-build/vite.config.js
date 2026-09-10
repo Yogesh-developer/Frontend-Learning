@@ -7,11 +7,11 @@ export default defineConfig({
   build: {
     lib: {
       entry: "index.js",
-      name: "Header",
+      name: "Cart",
       fileName: "index",
       formats: ["es"],
     },
-    rolldownOptions: {
+    rollupOptions: {
       external: [
         "react",
         "react-dom",
