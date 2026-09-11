@@ -49,7 +49,7 @@ sequenceDiagram
     Browser->>Header: Fetch /client.js
     Browser->>Products: Fetch /client.js
     Browser->>Cart: Fetch /client.js
-    Note over Browser: hydrateRoot runs on each island; interactive events active!
+    Note over Browser: hydrateRoot runs on each island to activate events
 ```
 
 ---
