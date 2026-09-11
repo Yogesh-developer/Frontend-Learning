@@ -33,26 +33,23 @@ sequenceDiagram
     participant Cart as 🛒 Cart Server (:4003)
 
     Browser->>Shell: GET / (Page Request)
-    par Concurrent Fragment Fetch
-        Shell->>Header: GET / (renderToString)
-        Header-->>Shell: Returns <header id="header-root"> HTML
-    and
-        Shell->>Products: GET / (renderToString)
-        Products-->>Shell: Returns <section id="products-root"> HTML
-    and
-        Shell->>Cart: GET / (renderToString)
-        Cart-->>Shell: Returns <section id="cart-root"> HTML
-    end
-    Shell-->>Browser: Sends Assembled SSR HTML + Stylesheets + <script type="module">
     
+    Note over Shell,Cart: Parallel Server-Side Fetch (Promise.all)
+    Shell->>Header: GET / (renderToString)
+    Header-->>Shell: Returns Header HTML fragment
+    Shell->>Products: GET / (renderToString)
+    Products-->>Shell: Returns Products HTML fragment
+    Shell->>Cart: GET / (renderToString)
+    Cart-->>Shell: Returns Cart HTML fragment
+
+    Shell-->>Browser: Sends Assembled SSR HTML + Stylesheets + Client Scripts
     Note over Browser: Browser paints static HTML immediately (0ms FCP)
     
-    par Client-Side Hydration
-        Browser->>Header: Fetch /client.js
-        Browser->>Products: Fetch /client.js
-        Browser->>Cart: Fetch /client.js
-    end
-    Note over Browser: hydrateRoot() runs on each island; interactive events active!
+    Note over Browser,Cart: Client-Side Islands Hydration
+    Browser->>Header: Fetch /client.js
+    Browser->>Products: Fetch /client.js
+    Browser->>Cart: Fetch /client.js
+    Note over Browser: hydrateRoot runs on each island; interactive events active!
 ```
 
 ---
